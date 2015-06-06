@@ -1,9 +1,30 @@
 <html>
 <head>
-	<title>IslandGen v:0.0.0.1</title>
+	<title>IslandGen v:0.0.0.2</title>
+	<style>
+		body, html {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		#canvasHolder {
+			width: 142px;
+			height: 142px;
+			background-image: url(magnifier.png);
+			background-size: 150px;
+			padding-top:10px;
+			padding-left:8px;
+			position: absolute;
+		}
+	</style>
 </head>
 <body>
-	<canvas id="canvass"  width="100px" height="100px"></canvas>
+	<canvas id="canvass"></canvas>
+	<div id="canvasHolder" background-image="magnifier.png">
+	<canvas id="canvas2" style="position: fixed; width: 128px; height: 128px; border-radius: 50%; border: 1px solid black"></canvas>
+	</div>
+	<!-- <input type="checkbox" id="stahp"> -->
 </body>
+<script src="perlin.js"></script>
 <script src="gen.js"></script>
 </html>
