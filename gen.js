@@ -1,3 +1,12 @@
+/*
+  This code is designed to generate an island formation using perlin noise. So far, it's awful.
+
+
+ */
+
+
+
+
 var gSeed = Math.random();
 var size = 1024;
 var mapSize = 512;
@@ -7,10 +16,10 @@ var g, m;
 var width = size+1;
 var height = size+1;
 var depth = 1;
-var startSpacing = 4;
+var startSpacing = 2;
 var ctx, ctb;
 var imgData,imgBata;
-generate(depth);
+generate();
 console.log("Finished Generation");
 drawFrame();
 
@@ -19,13 +28,17 @@ function generate(){
 	var c = document.getElementById("canvass");
 	c.width = window.innerWidth;
 	c.height = window.innerHeight;
-	// width = c.width;
-	// height = c.height;
+  while(c.width > size)
+    size += startSpacing;
+  while(c.height > size)
+    size += startSpacing;
+  width = size+1;
+  height = size+1;
 	ctx = c.getContext("2d");
   ctb = document.getElementById("canvas2").getContext("2d");
 	imgData=ctx.createImageData(width,height);
   imgBata=ctb.createImageData(mapSize,mapSize);
-
+  console.log(width)
 
 	g = new Array(width);
  	for (var i = 0; i < width; i++) {
@@ -153,7 +166,7 @@ function drawChunk(){
 var zoom = function(event){
   var x = event.clientX;
   var y = event.clientY;
-  magnify(x - 40, y-20);
+  magnify(x-40, y-10);
   drawChunk();
 }
 
@@ -161,8 +174,8 @@ function pick(event) {
   var x = event.pageX;
   var y = event.pageY;
   var s = document.getElementById("canvasHolder");
-  s.style.left = x - 64;
-  s.style.top = y - 64;
+  s.style.left = x - 80;
+  s.style.top = y - 80;
 }
 
 
